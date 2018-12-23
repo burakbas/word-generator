@@ -1,20 +1,61 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="jumbotron noprint">
+  <div class="container">
+    <h1>Kelime Oluşturma Sihirbazı</h1>
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/mavidisleksi/"
+       class="fa fa-instagram"></a> &nbsp;<span class="text-italic">Mavi Disklesi</span>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
+<div class="container">
+  <div class="row noprint">
+    <div class="col-md-12">
+      <h2>Hece Sayısı</h2>
+      <hr>
+      <span>Bir Heceli: &nbsp;</span> <input type="number" id="one" min="0" max="999" [(ngModel)]="one"
+                                             (keyup)="preventInput($event)"> &nbsp;&nbsp;&nbsp;
+      <span>İki Heceli: &nbsp;</span> <input type="number" id="two" min="0" max="999" [(ngModel)]="two"
+                                             (keyup)="preventInput($event)"> &nbsp;&nbsp;&nbsp;
+      <span>Üç Heceli: &nbsp;</span> <input type="number" id="three" min="0" max="999" [(ngModel)]="three"
+                                            (keyup)="preventInput($event)"> &nbsp;&nbsp;&nbsp;
+      <span>Dört Heceli: &nbsp;</span> <input type="number" id="four" min="0" max="999" [(ngModel)]="four"
+                                              (keyup)="preventInput($event)"> &nbsp;&nbsp;&nbsp;
+      <hr>
+      <button class="btn btn-primary" (click)="generate()">Kelime Listesi Oluştur.</button>
+    </div>
+  </div>
+
+  <hr class="noprint">
+
+  <div *ngIf="isGenerated">
+    <div class="row">
+      <div class="col-md-12">
+        <button class="btn btn-secondary noprint" (click)="printData()">Tabloyu Yazdır.</button>
+      </div>
+    </div>
+    <br>
+    <div class="row" *ngIf="oneList.length > 0">
+      <h3 class="col-md-12">1 Heceli</h3>
+      <p class="col-md-3" *ngFor="let word of oneList">{{ word }}</p>
+    </div>
+    <hr *ngIf="oneList.length > 0">
+    <div class="row" *ngIf="twoList.length > 0">
+      <h3 class="col-md-12">2 Heceli</h3>
+      <p class="col-md-3" *ngFor="let word of twoList">{{ word }}</p>
+    </div>
+    <hr *ngIf="twoList.length > 0">
+    <div class="row" *ngIf="threeList.length > 0">
+      <h3 class="col-md-12">3 Heceli</h3>
+      <p class="col-md-3" *ngFor="let word of threeList">{{ word }}</p>
+    </div>
+    <hr *ngIf="threeList.length > 0">
+    <div class="row" *ngIf="fourList.length > 0">
+      <h3 class="col-md-12">4 Heceli</h3>
+      <p class="col-md-3" *ngFor="let word of fourList">{{ word }}</p>
+    </div>
+    <hr>
+  </div>
+
+  <footer>
+    <p>&copy; Mavi Disleksi 2019</p>
+  </footer>
+</div> <!-- /container -->
